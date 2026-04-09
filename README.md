@@ -1,116 +1,120 @@
-ASKIO1 — NAVI
-Agent autonome de navigation directionnelle
-Le premier agent qui comprend la direction.
-🧭 Qu’est‑ce que NAVI ?
-NAVI est l’agent autonome d’ASKIO1.
-Il ne répond pas.
-Il oriente.
+# ASKIO1 / NAVI — Système de navigation directionnelle
 
-Il ne gère pas des tâches.
-Il réduit la charge mentale.
+## Vision
 
-Il ne propose pas des options.
-Il ouvre le bon corridor.
+ASKIO1 est un **système de navigation humaine**.  
+Un cockpit.  
+Un axe.  
+Un champ directionnel qui clarifie, stabilise et oriente.
 
-NAVI applique les 7 opérations directionnelles d’ASKIO1 :
+Au centre : **NAVI**, un agent autonome qui comprend l'intention, réduit la charge mentale et ouvre le bon corridor.
 
-Ouvrir — voir ce qui est là, sans bruit
+---
 
-Stabiliser — ramener la présence
+## Architecture
 
-Naviguer — choisir la direction juste
+```
+navi/
+│
+├── core/           # État directionnel et logique interne
+├── clarifier/      # Lecture et clarification d'intention
+├── stabilizer/     # Régulation de présence et charge mentale
+├── navigator/      # Sélection du corridor directionnel
+├── closer/         # Fermeture propre des cycles
+├── integrator/     # Mise à jour de l'attracteur
+├── redirector/     # Retour à l'essentiel
+├── converger/      # Convergence et sortie finale
+├── video/          # Pipeline vidéo IA (SkyReels / Open-Sora / LTX)
+├── multimodal/     # Analyse image + audio + fusion
+└── theory/         # Équations directionnelles et invariants
+```
 
-Fermer — consolider ce qui a été clarifié
+---
 
-Intégrer — mettre à jour l’attracteur
+## Théorie directionnelle
 
-Rediriger — revenir à l’essentiel
+La dynamique de NAVI repose sur un ensemble d'équations formelles décrivant la **navigation incarnée** :
 
-Converger — se rapprocher de la version la plus juste de soi
+$$x_{t+1} = G(A(F(x_t) + (dF_{x_t})^{\dagger}(g^* - F(x_t)))) + C_{corr}(t) + C_{sync}(t) + \varepsilon(t)$$
 
-🧩 Objectif du projet
-Créer un agent autonome multimodal capable de :
+Chaque module correspond à une boucle cognitive :
 
-comprendre l’intention implicite
+| Module | Équation |
+|--------|----------|
+| `clarifier` | F(xₜ) — lecture d'état |
+| `stabilizer` | ϟP(t), C(t) — régulation de présence |
+| `navigator` | τ — dérive implicite |
+| `integrator` | A₀ — attracteur |
+| `converger` | dx/dt — convergence |
 
-détecter la dérive
+Détails dans [navi/theory/README.md](navi/theory/README.md).
 
-stabiliser l’état directionnel
+---
 
-générer des actions cohérentes
+## Démarrage rapide
 
-orchestrer des pipelines IA (texte, image, vidéo)
+```bash
+# Depuis la racine du repo
+PYTHONPATH=. python examples/demo.py
+```
 
-fonctionner en infrastructure hybride (local + cloud)
+```
+=== Cas 1 : texte seul ===
+Intention    : Retrouver la direction
+Direction    : Corridor : Recentrage
+Convergence  : Convergence vers la version la plus juste
 
-s’améliorer en continu grâce au feedback
+=== Cas 2 : multimodal ===
+Intention    : Clarifier l'objectif (Organisation du travail · Stabilisation déjà en cours)
+Direction    : Corridor : Clarification
+Vidéo        : [SkyReels] Vidéo générée pour : ...
+```
 
-NAVI est le cœur technique de l’empire ASKIO1.
+---
 
-🏗️ Architecture (v0.1)
-Code
-/navi
-  /core          → noyau directionnel (attracteur, dérive, charge mentale)
-  /state         → lecteur d’état (texte, audio, multimodal)
-  /clarifier     → extraction d’intention
-  /stabilizer    → réduction de charge mentale
-  /navigator     → sélection de corridor
-  /closer        → fermeture propre
-  /integrator    → mise à jour d’attracteur
-  /redirector    → retour à l’essentiel
-  /converger     → alignement identité + horizon + décisions
-  /pipelines     → génération vidéo (SkyReels / Open‑Sora / LTX)
-  /hybrid        → orchestration local + cloud
-🚀 Roadmap
-v0.1 — Structure du noyau
-Attracteur A₀
+## Pipeline vidéo IA
 
-Dérive τ
+NAVI v0.4 introduit la génération vidéo via un pipeline modulaire :
 
-Charge mentale C(t)
+- **SkyReels** — moteur libre de rendu IA
+- **Open-Sora** — modèle de génération vidéo open source
+- **LTX-Video** — moteur de composition directionnelle
 
-Corridors directionnels
+Chaque backend est accessible via `VideoPipeline`.
 
-v0.2 — Agent textuel
-Clarifier
+---
 
-Stabiliser
+## Tests
 
-Naviguer
+```bash
+PYTHONPATH=. python tests/test_dynamics_vector.py
+```
 
-Fermer
+Valide : dérives (τ) · charge mentale (C) · similarité cosine avec attracteur.
 
-v0.3 — Agent multimodal
-Analyse image
+---
 
-Analyse audio
+## Roadmap (12 mois)
 
-Génération vidéo IA
+1. **Fondation** — NAVI v0.x + Gravité YouTube
+2. **Communauté** — Discord + Feedback Loop
+3. **Asymétrie** — NAVI v1.0 + Cockpit ASKIO1
+4. **Infrastructure** — API publique + Compute hybride
+5. **Écosystème** — Marketplace d'agents
+6. **Empire** — Gravité mondiale + Cockpit v2
 
-v0.4 — Pipeline hybride
-exécution locale
+---
 
-exécution cloud
+## Liens
 
-orchestration automatique
+- Site : [askio1.com](https://askio1.com)
+- Chaîne YouTube : [ASKIO1](https://www.youtube.com/@askio1)
+- GitHub : [yoanMaisonneuve/askio1-navi](https://github.com/yoanMaisonneuve/askio1-navi)
 
-v1.0 — NAVI complet
-cockpit ASKIO1
+---
 
-API publique
-
-boucle auto‑renforçante
-
-marketplace d’agents
-
-🌐 ASKIO1
-NAVI est une composante du système ASKIO1 :
-
-un champ directionnel qui clarifie, stabilise, oriente et ramène vers l’essentiel.
-
-Site : https://askio1.com
-
-📜 Licence
-À définir (MIT recommandé pour maximiser l’adoption).
-
-Fin du README.
+```
+ASKIO1 — NAVI / Blueprint
+Théorie directionnelle du tout
+© 2026 Yoan Maisonneuve
+```
