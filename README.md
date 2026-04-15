@@ -49,6 +49,8 @@ Chaque module correspond à une boucle cognitive :
 
 Détails dans [navi/theory/README.md](navi/theory/README.md).
 
+**Catalogue canonique complet** : [docs/EQUATIONS.md](docs/EQUATIONS.md) — référence unique pour C0 (invariants) → C5 (phylogénétique cognitive), incluant AGENT-BP, BNGUR, TNI, PNC-01, FORMULE 29. Toute implémentation doit référencer un ID canonique (ex: `BNGUR-ENGU-01`, `C3.2`, `I17`).
+
 ---
 
 ## Démarrage rapide
